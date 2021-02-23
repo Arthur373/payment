@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = HibernateException.class)
     public UserEntity saveUser(UserEntity userEntity) {
-        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         return this.userRepository.save(userEntity);
     }
 }

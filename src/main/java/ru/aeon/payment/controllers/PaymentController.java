@@ -47,7 +47,7 @@ public class PaymentController {
         }
         try {
             // Get User from token
-            UserEntity userEntity = this.userService.getUserByEmail(jwtTokenProvider.getUsernameFromToken(jwtToken)).orElseThrow(
+            UserEntity userEntity = this.userService.getUserByEmail(this.jwtTokenProvider.getUsernameFromToken(jwtToken)).orElseThrow(
                     () -> new UsernameNotFoundException("User not found "));
             if (userEntity.getBalance().doubleValue() > 1.1) {
                 userEntity.setBalance(userEntity.getBalance().subtract(BigDecimal.valueOf(1.1)));
